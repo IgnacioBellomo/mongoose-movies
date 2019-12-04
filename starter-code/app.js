@@ -31,14 +31,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(session({
-  secret: "basic-auth-secret",
-  cookie: { maxAge: 60000 },
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection,
-    ttl: 24 * 60 * 60 // 1 day
-  })
-}));
 // Express View engine setup
 
 app.use(require('node-sass-middleware')({
@@ -58,6 +50,20 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'Mongo Movies';
 
+app.use(session({
+  secret: "basic-auth-secret",
+  cookie: { maxAge: 60000 },
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60 // 1 day
+  })
+}));
+
+app.use((req, res, next)=>{
+  res.locals.user = req.session.currentUser;
+  next();
+})
+
 
 
 const celebrityRoutes = require('./routes/celebrities');
@@ -65,6 +71,9 @@ app.use('/', celebrityRoutes);
 
 const movieRoutes = require('./routes/movies');
 app.use('/', movieRoutes);
+
+const userRoutes = require('./routes/users');
+app.use('/', userRoutes);
 
 
 module.exports = app;
