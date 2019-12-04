@@ -22,6 +22,7 @@ router.get('/movies/new', (req, res, next) => {
     })
   })
   
+  // Deletes a movie
   router.post('/movies/:movieId/delete', (req, res, next) => {
     let id = req.params.movieId;
     Movie.findByIdAndRemove(id)
@@ -33,28 +34,32 @@ router.get('/movies/new', (req, res, next) => {
     })
   })
   
-  router.get('/movies/:movieId/edit', (req, res, next) => {
+  // Form to edit a movie
+  router.get('/movies/:movieId/edit', async (req, res, next) => {
     let id = req.params.movieId;
-    Movie.findById(id)
-    .then((movie) => {
-      res.render('movies/edit', {movie: movie});
-    })
-    .catch((err) => {
-      next(err);
-    })
+    let movie = await Movie.findById(id).catch((err) => console.log(err))
+    let celebs = await Celebrity.find().catch((err) => console.log(err))
+    res.render('movies/edit', {celebs: celebs, movie: movie})
   })
   
-  router.get('/movies/:movieId', (req, res, next) => {
+  // Movie info page
+  router.get('/movies/:movieId', async (req, res, next) => {
     let id = req.params.movieId;
-    Movie.findById(id)
-    .then((movie) => {
-      res.render('movies/show', {movie: movie})
-    })
-    .catch((err) => {
-      next(err);
-    })
+    let actors = [];
+    let movie = await Movie.findById(id).catch((err) => console.log(err))
+    for (let actorId of movie.actors) {
+        Celebrity.findById(actorId)
+        .then((celeb) => {
+            actors.push(celeb);
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+    }
+    res.render('movies/show', {movie: movie, actors: actors});
   })
   
+  // Edits a movie
   router.post('/movies/:movieId', (req, res, next) => {
     let id = req.params.movieId;
     let update = {...req.body};
@@ -67,6 +72,7 @@ router.get('/movies/new', (req, res, next) => {
     })
   })
   
+  // Creates a movie
   router.post('/movies', (req, res, next) => {
     let newMovie = {
         title: req.body.title,

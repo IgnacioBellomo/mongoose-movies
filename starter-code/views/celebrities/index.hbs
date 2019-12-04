@@ -1,17 +1,20 @@
-<div class="row">
-    <div class="col-12 text-center pt-5">
-        <h1 style="font-weight: bold">Celebrities</h1>
-        <a class="btn btn-success" href="/celebrities/new"> Create your own celebrity!</a>
-    </div>
-    {{#each celebs}}
-        <div class="col-4 text-center pt-5">
-            <a href="/celebrities/{{this._id}}">
-                <h2>{{this.name}}</h2>
-            </a>
-            <a href="/celebrities/{{this._id}}/edit" style="font-size: 1em" class="btn btn-primary mb-3">Edit Celebrity</a> 
-            <form action="/celebrities/{{this._id}}/delete" method="POST">
-                <button style="font-size: 1em" class="btn btn-danger">Delete Celebrity</button>
-            </form>  
+<div class="container-fluid celebrities">
+    <div class="row">
+        <div class="col-12 text-center pt-5">
+            <h1 style="font-weight: bold">Celebrities</h1>
+            <a class="btn btn-success" href="/celebrities/new"> Create your own celebrity!</a>
         </div>
-    {{/each}}
+        {{#each celebs}}
+            <div class="col-4 text-center pt-5">
+                <a href="/celebrities/{{this._id}}">
+                    <h2>{{this.name}}</h2>
+                </a>
+                <a href="/celebrities/{{this._id}}/edit" style="font-size: 1em" class="btn btn-primary mb-3">Edit Celebrity</a> 
+                <form action="/celebrities/{{this._id}}/delete" method="POST">
+                    <button style="font-size: 1em" class="btn btn-danger">Delete Celebrity</button>
+                </form>  
+            </div>
+        {{/each}}
+    </div>
 </div>
+

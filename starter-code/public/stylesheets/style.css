@@ -1,8 +1,50 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #dcf7f5; }
+  background-color: #dcf7f5;
+  width: 100vw;
+  height: 100vh; }
 
 a {
   color: #00B7FF; }
+
+.celebrities {
+  color: white;
+  height: 93%;
+  width: 100%;
+  background-image: url("https://ak3.picdn.net/shutterstock/videos/1007507563/thumb/1.jpg");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.celebrities a {
+  color: white; }
+
+.movies {
+  color: white;
+  height: 93%;
+  width: 100%;
+  background-image: url("https://miro.medium.com/max/12000/0*z9WXKtzmXIvVj6UK.");
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.movies a {
+  color: white; }
+
+.home-screen {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 200px;
+  padding-top: 150px;
+  background-image: url("../images/cinema.jpg");
+  width: 100%;
+  height: 93%;
+  color: white;
+  background-repeat: no-repeat;
+  background-size: 100% 100%; }
+
+.home-screen h1 {
+  font-weight: bold;
+  font-size: 6em; }
 
 /*# sourceMappingURL=style.css.map */

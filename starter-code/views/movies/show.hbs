@@ -1,0 +1,24 @@
+<div class="container-fluid movies">
+    <div class="row">
+        <div class="col-6 pt-5 pl-5">
+            <h1>{{movie.title}}</h1>
+
+            <h3>Genre:</h3>
+            <h4>{{movie.genre}}</h4>
+
+            <h5>Starring:</h5>
+            <ul>
+                {{#each actors}}
+                    <li>
+                        <a href="/celebrities/{{this._id}}">
+                            {{this.name}}
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+
+            <h5>Plot:</h5>
+            <h6>{{movie.plot}}</h6>
+        </div>
+    </div>
+</div>
