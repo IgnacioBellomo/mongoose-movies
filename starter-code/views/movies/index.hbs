@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-12 text-center pt-5">
+        <h1 style="font-weight: bold">Movies</h1>
+        <a class="btn btn-success" href="/movies/new"> Create your own movie!</a>
+    </div>
+    {{#each movies}}
+        <div class="col-4 text-center pt-5">
+            <a href="/movies/{{this._id}}">
+                <h2>{{this.title}}</h2>
+            </a>
+            <a href="/movies/{{this._id}}/edit" style="font-size: 1em" class="btn btn-primary mb-3">Edit Movie</a> 
+            <form action="/movies/{{this._id}}/delete" method="POST">
+                <button style="font-size: 1em" class="btn btn-danger">Delete Movie</button>
+            </form>  
+        </div>
+    {{/each}}
+</div>

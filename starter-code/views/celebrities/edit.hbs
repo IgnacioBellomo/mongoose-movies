@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-4 offset-4">
+        <div class="text-center pt-3">
+            <h2>Edit Celebrity</h2>
+            <form action="/celebrities/{{celeb._id}}" method="POST">
+                <div class="form-group">
+                    <label for="title">Name of Celebrity</label>
+                    <input type="text" class="form-control" name="name" value="{{celeb.name}}">
+                </div>
+                <div class="form-group">
+                    <label for="director">Occupation</label>
+                    <input type="text" class="form-control" name="occupation" value="{{celeb.occupation}}">
+                </div>
+                <div class="form-group">
+                    <label for="image">Catch Phrase</label>
+                    <input type="text" class="form-control" name="catchPhrase" value="{{celeb.catchPhrase}}">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
