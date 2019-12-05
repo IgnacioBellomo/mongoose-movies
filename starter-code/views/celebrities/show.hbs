@@ -1,11 +1,14 @@
 <div class="container-fluid celebrities">
     <div class="row">
-        <div class="col-6 pt-5 pl-5">
+        <div class="col-6 offset-3 text-center pt-5 pl-5">
             <h2>Name: {{celeb.name}}</h2>
-
+            <img src="{{celeb.image}}" alt="" style="height: 300px; width: 300px">
+            <div class="actor-info text-left mt-2">
             <h4>Occupation: {{celeb.occupation}}</h4>
 
             <h5>Catchphrase: {{celeb.catchPhrase}}</h5>
+            </div>
+
         </div>
     </div>
 </div>

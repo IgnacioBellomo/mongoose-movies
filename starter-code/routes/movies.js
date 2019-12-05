@@ -23,7 +23,8 @@ router.get('/movies', (req, res, next) => {
 // GET create a new movie page
 router.get('/movies/new', (req, res, next) => {
   if(!req.session.currentUser){
-    res.redirect('/login')
+    res.redirect('/login');
+    return;
   }
     Celebrity.find()
     .then((celebs) => {
@@ -34,7 +35,8 @@ router.get('/movies/new', (req, res, next) => {
 // GET edit a movie page
 router.get('/movies/:movieId/edit', async (req, res, next) => {
   if(!req.session.currentUser){
-    res.redirect('/login')
+    res.redirect('/login');
+    return;
   }
   let id = req.params.movieId;
   let movie = await Movie.findById(id).catch((err) => console.log(err))
@@ -58,6 +60,10 @@ router.get('/movies/:movieId', async (req, res, next) => {
 
 // POST delete a movie
 router.post('/movies/:movieId/delete', (req, res, next) => {
+  if(!req.session.currentUser){
+    res.redirect('/login');
+    return;
+  }
   let id = req.params.movieId;
   Movie.findByIdAndRemove(id)
   .then(() => {
@@ -70,6 +76,10 @@ router.post('/movies/:movieId/delete', (req, res, next) => {
 
 // POST edit a movie
 router.post('/movies/:movieId', (req, res, next) => {
+  if(!req.session.currentUser){
+    res.redirect('/login');
+    return;
+  }
   let id = req.params.movieId;
   let update = {...req.body};
   Movie.findByIdAndUpdate(id, update)
@@ -83,6 +93,10 @@ router.post('/movies/:movieId', (req, res, next) => {
 
 // POST create a movie
 router.post('/movies', (req, res, next) => {
+  if(!req.session.currentUser){
+    res.redirect('/login');
+    return;
+  }
   let newMovie = {
       title: req.body.title,
       genre: req.body.genre,

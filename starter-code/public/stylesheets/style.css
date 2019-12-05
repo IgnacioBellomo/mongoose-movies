@@ -1,30 +1,33 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #dcf7f5;
+  background-color: rgba(76, 25, 25, 0.78);
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  color: white; }
 
 a {
   color: #00B7FF; }
 
 .celebrities {
   color: white;
-  height: 93%;
+  height: auto;
+  min-height: 93%;
   width: 100%;
   background-image: url("https://ak3.picdn.net/shutterstock/videos/1007507563/thumb/1.jpg");
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: repeat; }
 
 .celebrities a {
   color: white; }
 
 .movies {
   color: white;
-  height: 93%;
+  height: auto;
+  min-height: 93%;
   width: 100%;
   background-image: url("https://miro.medium.com/max/12000/0*z9WXKtzmXIvVj6UK.");
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: repeat; }
 
 .movies a {
   color: white; }
@@ -46,5 +49,17 @@ a {
 .home-screen h1 {
   font-weight: bold;
   font-size: 6em; }
+
+.movie-info {
+  background-color: rgba(76, 25, 25, 0.78);
+  border-radius: 10px;
+  width: 100%;
+  padding: 15px; }
+
+.actor-info {
+  background-color: rgba(76, 25, 25, 0.78);
+  border-radius: 10px;
+  width: 100%;
+  padding: 15px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -27,13 +27,18 @@ router.get('/celebrities', (req, res, next) => {
 // GET create new celebrity page
 router.get('/celebrities/new', (req, res, next) => {
   if(!req.session.currentUser){
-    res.redirect('/login')
+    res.redirect('/login');
+    return;
   }
   res.render('celebrities/new')
 })
 
 // GET edit a celebrity page
 router.get('/celebrities/:celebId/edit', (req, res, next) => {
+  if(!req.session.currentUser){
+    res.redirect('/login');
+    return;
+  }
   let id = req.params.celebId;
   Celebrity.findById(id)
   .then((celeb) => {
@@ -64,6 +69,10 @@ router.get('/celebrities/:celebId', (req, res, next) => {
 
 // POST delete a celebrity
 router.post('/celebrities/:celebId/delete', (req, res, next) => {
+  if(!req.session.currentUser){
+    res.redirect('/login');
+    return;
+  }
   let id = req.params.celebId;
   Celebrity.findByIdAndRemove(id)
   .then(() => {
@@ -76,6 +85,10 @@ router.post('/celebrities/:celebId/delete', (req, res, next) => {
 
 // POST update a celebrity
 router.post('/celebrities/:celebId', (req, res, next) => {
+  if(!req.session.currentUser){
+    res.redirect('/login');
+    return;
+  }
   let id = req.params.celebId;
   let update = {...req.body};
   Celebrity.findByIdAndUpdate(id, update)
@@ -90,6 +103,10 @@ router.post('/celebrities/:celebId', (req, res, next) => {
 
 // POST create a celebrity
 router.post('/celebrities', (req, res, next) => {
+  if(!req.session.currentUser){
+    res.redirect('/login');
+    return;
+  }
   Celebrity.create(req.body)
   .then(() => {
     res.redirect('/celebrities');
