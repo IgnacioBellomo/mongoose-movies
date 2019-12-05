@@ -3,10 +3,29 @@ const router  = express.Router();
 const User    = require('../models/User');
 const bcrypt  = require('bcryptjs');
 
+
+/* 
+  GET requests
+*/
+
+
+// GET login page
 router.get('/login', (req, res, next) => {
     res.render('users/login');
 })
 
+// GET signup page
+router.get('/signup', (req, res, next) => {
+    res.render('users/signup');
+})
+
+
+/* 
+  POST requests
+*/
+
+
+// POST login to site
 router.post('/login', (req, res, next) => {
     let email = req.body.email;
     let password = req.body.password;
@@ -32,10 +51,7 @@ router.post('/login', (req, res, next) => {
     })
 })
 
-router.get('/signup', (req, res, next) => {
-    res.render('users/signup');
-})
-
+// POST sign up for site
 router.post('/signup', (req, res, next)=>{
 
     const salt  = bcrypt.genSaltSync(10);
@@ -61,6 +77,7 @@ router.post('/signup', (req, res, next)=>{
     })
 })
 
+// POST log out of site
 router.post('/logout', (req, res, next)=>{
     req.session.destroy()
     res.redirect('/')

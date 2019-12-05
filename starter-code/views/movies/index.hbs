@@ -9,10 +9,12 @@
                 <a href="/movies/{{this._id}}">
                     <h2>{{this.title}}</h2>
                 </a>
+                {{#if ../user}}
                 <a href="/movies/{{this._id}}/edit" style="font-size: 1em" class="btn btn-primary mb-3">Edit Movie</a> 
                 <form action="/movies/{{this._id}}/delete" method="POST">
                     <button style="font-size: 1em" class="btn btn-danger">Delete Movie</button>
-                </form>  
+                </form>
+                 {{/if}}
             </div>
         {{/each}}
     </div>

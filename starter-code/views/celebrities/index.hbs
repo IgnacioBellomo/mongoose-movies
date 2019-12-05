@@ -9,10 +9,12 @@
                 <a href="/celebrities/{{this._id}}">
                     <h2>{{this.name}}</h2>
                 </a>
+                {{#if ../user}}
                 <a href="/celebrities/{{this._id}}/edit" style="font-size: 1em" class="btn btn-primary mb-3">Edit Celebrity</a> 
                 <form action="/celebrities/{{this._id}}/delete" method="POST">
                     <button style="font-size: 1em" class="btn btn-danger">Delete Celebrity</button>
-                </form>  
+                </form> 
+                {{/if}} 
             </div>
         {{/each}}
     </div>
